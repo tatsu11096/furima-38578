@@ -87,6 +87,3 @@ has_one:order
 
 belongs_to:order
 
-
-### Association
-（ここに追記していく）
