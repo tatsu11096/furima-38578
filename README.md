@@ -7,6 +7,7 @@
 |email|string|null:false,unique: true|
 |nickname|string|null:false,unique: true|
 |password|string|null:false,unique: true|
+
 has_many:items
 has_many:orders
 
@@ -24,7 +25,7 @@ has_many:orders
 |prefecture|string|null:false|
 |city|string|null:false|
 |city_address|string|null:false|
-|building|date|null:fa|
+|building|date|null:false|
 |User_id|references|null:false|
 
 ## Credit_cardテーブル
@@ -33,6 +34,7 @@ has_many:orders
 |id|string|null:false|
 |token_login_login|string|null:false|
 |User_id|string|null:false|
+
 belongs_to_users
 
 
@@ -50,12 +52,12 @@ belongs_to_users
 |city_address|string|null:false|
 |building|string|null:false|
 |telephone|string|null:false|
-|belongs_to:items|string|null:false|
+|items_id|string|null:false|
 
 
 belongs_to_user
 belongs_to:item
-has_one:delivery
+
 
 ## itemsテーブル
 
@@ -75,18 +77,6 @@ has_one:delivery
 belongs_to_user
 has_one:order
 
-## deliveryテーブル
-
-|name|string|null:false|
-|zip_code|string|null:false|
-|prefecture|string|null:false|
-|city|string|null:false|
-|city_address|string|null:false|
-|building|string|null:false|
-|telephone|string|null:false|
-|order_id|references|null: false, foreign_key: true|
-
-belongs_to:order
 
 
 ### Association
