@@ -43,14 +43,14 @@ belongs_to_users
 |address|string|null:false|
 |buyer|string|null:false|
 |credit_token|string|null:false|
-|zip_code|string|null:false|
+|zip_code|integer|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
-|city_address|string|null:false|
-|building|string|null:false|
+|city_address|integer|null:false|
+|building|string|      |
 |telephone|string|null:false|
-|belongs_to:items|string|null:false|
-
+カード情報、有効期限、セキュリティーコード
+|User_id|references|null:false|
 
 belongs_to_user
 belongs_to:item
@@ -60,15 +60,15 @@ has_one:delivery
 
 |Column|Type|Options|
 |name|string|null:false|
+
+|message|references|null:false|
 |category_id|string|null:false|
-|message|text|null:false|
-|seller|string|null:false|
-|picture|string|null:false|
-|shipping_date|string|null:false|
-|shipping_region|integer|null:false|
-|shipping_charges|integer|null:false|
-|price|integer|null:false|
 |condition|string|null:false|
+|picture|string|null:false|
+|shipping_charges|integer|null:false|
+|shipping_region|integer|null:false|
+|shipping_date|string|null:false|
+|price|integer|null:false|
 |user_id|references|null:false,foreign_key: true|
 
 belongs_to_user
