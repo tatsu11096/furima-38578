@@ -4,16 +4,9 @@
 ## Usersテーブル
 
 |Column|Type|Options|
+|nickname|string|null:false|
 |email|string|null:false,unique: true|
-|nickname|string|null:false,unique: true|
-|password|string|null:false,unique: true|
-
-has_many:items
-has_many:orders
-
-## Profileテーブル
-
-|Column|Type|Options|
+|encrypted_password|string|null:false|
 |last_name|string|null:false|
 |first_name|string|null:false|
 |last_name_kana|string|null:false|
@@ -21,57 +14,48 @@ has_many:orders
 |birth_year|string|null:false|
 |birth_month|string|null:false|
 |birth_day|string|null:false|
-|zip_code|string|null:false|
-|prefecture|string|null:false|
-|city|string|null:false|
-|city_address|string|null:false|
-|building|date|null:false|
-|User_id|references|null:false|
 
-## Credit_cardテーブル
 
-|Column|Type|Options|
-|id|string|null:false|
-|token_login_login|string|null:false|
-|User_id|string|null:false|
-
-belongs_to_users
+has_many:items
+has_many:orders
 
 
 ## orderテーブル
 
 |Column|Type|Options|
-|name|string|null:false|
-|date|string|null:false|
-|address|string|null:false|
-|buyer|string|null:false|
-|credit_token|string|null:false|
+|user_id|references|null:false|
+|items_id|references|null:false|
+belongs_to:user
+belongs_to:item
+has_one:delivery
+
+## deliveryテーブル
+
+|Column|Type|Options|
 |zip_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
 |city_address|string|null:false|
 |building|string|null:false|
 |telephone|string|null:false|
-|items_id|string|null:false|
+|user_id|reference|null:false|
+|orders_id|references|null:false|
 
-
-belongs_to_user
-belongs_to:item
+belongs_to_order
 
 
 ## itemsテーブル
 
 |Column|Type|Options|
-|name|string|null:false|
-|category_id|string|null:false|
-|message|text|null:false|
-|seller|string|null:false|
 |picture|string|null:false|
-|shipping_date|string|null:false|
-|shipping_region|integer|null:false|
-|shipping_charges|integer|null:false|
-|price|integer|null:false|
+|name|string|null:false|
+|message|text|null:false|
+|category_id|string|null:false|
 |condition|string|null:false|
+|shipping_charges|string|null:false|
+|shipping_region|string|null:false|
+|shipping_date|string|null:false|
+|price|integer|null:false|
 |user_id|references|null:false,foreign_key: true|
 
 belongs_to_user
@@ -80,4 +64,5 @@ has_one:order
 
 
 ### Association
+
 （ここに追記していく）
