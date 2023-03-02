@@ -18,7 +18,7 @@
 has_many:items
 has_many:orders
 
-## orderテーブル
+## ordersテーブル
 
 |Column|Type|Options|
 |user|references|null:false|
@@ -30,16 +30,16 @@ belongs_to:user
 belongs_to:item
 has_one:delivery
 
-## deliveryテーブル
+## deliverysテーブル
 
 |Column|Type|Options|
-|zip_code    |string    |null:false|
-|prefecture  |integer   |null:false|
-|city        |string    |null:false|
-|city_address|string    |null:false|
-|building    |string    |
-|telephone   |string    |null:false|
-|order       |references|null:false,foreign_key: true|
+|zip_code          |string    |null:false|
+|shipping_region_id|integer   |null:false|
+|city              |string    |null:false|
+|city_address      |string    |null:false|
+|building          |string    |
+|telephone         |string    |null:false|
+|order             |references|null:false,foreign_key: true|
 
 ### Association
 
@@ -48,21 +48,18 @@ belongs_to:order
 ## itemsテーブル
 
 |Column|Type|Options|
-|name           |string    |null:false|
-|message        |text      |null:false|
-|category       |integer   |null:false|
-|condition      |integer   |null:false|
-|shipping_charge|integer   |null:false|
-|shipping_region|integer   |null:false|
-|shipping_date  |integer   |null:false|
-|price          |integer   |null:false|
-|user           |references|null:false,foreign_key: true|
+|name              |string    |null:false|
+|message           |text      |null:false|
+|category          |integer   |null:false|
+|condition_id      |integer   |null:false|
+|shipping_charge_id|integer   |null:false|
+|shipping_region_id|integer   |null:false|
+|shipping_date_id  |integer   |null:false|
+|price             |integer   |null:false|
+|user              |references|null:false,foreign_key: true|
 
 ### Association
 
 belongs_to:user
 has_one:order
 
-### Association
-
-（ここに追記していく）
