@@ -21,8 +21,8 @@ has_many:orders
 ## ordersテーブル
 
 |Column|Type|Options|
-|user|references|null:false|
-|item|references|null:false|
+|user|references|null:false,foreign_key: true|
+|item|references|null:false,foreign_key: true|
 
 ### Association
 
@@ -50,7 +50,7 @@ belongs_to:order
 |Column|Type|Options|
 |name              |string    |null:false|
 |message           |text      |null:false|
-|category          |integer   |null:false|
+|category_id       |integer   |null:false|
 |condition_id      |integer   |null:false|
 |shipping_charge_id|integer   |null:false|
 |shipping_region_id|integer   |null:false|
