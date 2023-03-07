@@ -13,14 +13,13 @@ class Item < ApplicationRecord
  
 
   with_options presence: true do
-    validates :item_name
     validates :image
-    validates :price
-    validates :explanation_text
+    validates :name
+    validates :message
     validates :category_id
-    validates :state_id
-    validates :delivery_charge_id
-    validates :shipper_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :shipping_region_id
     validates :shipping_date_id
     end
 
