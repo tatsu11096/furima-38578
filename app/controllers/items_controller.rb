@@ -1,11 +1,8 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーはトップページに促す
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index ]
 
-  def index
-    @items = Item.all
-  end
-
+  
   def new
     @item = Item.new
   end
@@ -18,8 +15,9 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-  end
+  end 
 
+  private
   def item_params
     params.require(:item).permit(:image, :name, :message, :category_id, :condition_id, :shipping_charge_id, :shipping_region_id,
                                  :shipping_date_id, :price).merge(user_id: current_user.id)
