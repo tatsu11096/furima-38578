@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   # ログインしていないユーザーはトップページに促す
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show]
-  # before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update]
+ 
   # before_action :redirect,           only:   [:edit, :update, :destroy]
 
   def index
@@ -14,20 +14,29 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def index
-    @items = Item.all.order(created_at: 'DESC')
-  end
+  
 
   def show
   
   end
 
-  def edit
-    unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to root_path
+ 
+    def edit
+      redirect_to root_path unless current_user.id == @item.user_id
+    end
+    
+  
+   
+  
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
     end
   end
-  
+
   def create
     @item = Item.new(item_params)
     if @item.valid?
