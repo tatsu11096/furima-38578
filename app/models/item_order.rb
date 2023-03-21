@@ -1,5 +1,4 @@
 class ItemOrder < ApplicationRecord
-
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :zip_code, :shipping_region_id, :city, :city_address, :building, :telephone, :token
 
@@ -14,12 +13,12 @@ class ItemOrder < ApplicationRecord
     validates :city_address
     validates :telephone, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
     # トークンのバリデーション
-    validates :token,presence: true
+    validates :token, presence: true
   end
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Delivery.create(zip_code: zip_code, shipping_region_id: shipping_region_id, city: city, city_address: city_address, building: building, telephone: telephone)
+    Delivery.create(zip_code: zip_code, shipping_region_id: shipping_region_id, city: city, city_address: city_address,
+                    building: building, telephone: telephone)
   end
 end
-
