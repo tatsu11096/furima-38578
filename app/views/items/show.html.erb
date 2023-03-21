@@ -25,7 +25,8 @@
     </div>
 
  <% if user_signed_in? %>
-   <%if current_user.id == @item.user_id %>
+  <% unless @item.order.present? %>
+   <%if @item.user_id == current_user.id %>
 
   <%= link_to "商品の編集",  edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
 
@@ -34,7 +35,7 @@
 <% else %> 
  <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
 <% end %>
- 
+ <% end %>
 <% end %>
     
     <div class="item-explain-box">
