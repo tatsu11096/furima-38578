@@ -78,5 +78,11 @@ RSpec.describe Delivery, type: :model do
       @delivery.valid?
       expect(@delivery.errors.full_messages).to include "Item can't be blank"
     end
+
+    it 'tokenが空では登録できない' do
+      @delivery.token = nil
+      @delivery.valid?
+      expect(@delivery.errors.full_messages).to include "Token can't be blank"
+    end
   end
 end
