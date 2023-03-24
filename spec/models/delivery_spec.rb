@@ -59,13 +59,13 @@ RSpec.describe Delivery, type: :model do
     it '電話番号が11桁より多いだと購入できない' do
       @delivery.telephone = '1234567890123'
       @delivery.valid?
-      expect(@delivery.errors.full_messages).to include 'telephone is invalid.'
+      expect(@delivery.errors.full_messages).to include 'Telephone is invalid.'
     end
 
     it '電話番号に半角数値以外が含まれている場合は購入できない' do
       @delivery.telephone = '123-4567-8901'
       @delivery.valid?
-      expect(@delivery.errors.full_messages).to include 'telephone is invalid.'
+      expect(@delivery.errors.full_messages).to include 'Telephone is invalid.'
     end
 
     it 'ユーザーが紐付いていなければ投稿できない' do
